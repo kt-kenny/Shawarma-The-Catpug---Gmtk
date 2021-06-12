@@ -23,10 +23,7 @@ public class Mine : MonoBehaviour
         if (collision.tag == "Player") {
             Debug.Log("collided with player");
             GameObject explosion = Instantiate(explosionPrefab, gameObject.transform.position, gameObject.transform.rotation);
-            //if (gameObject.GetComponent<SpriteRenderer>().enabled == false){
-            //    gameObject.GetComponent<SpriteRenderer>().enabled = true;
-            //    gameObject.GetComponent<SpriteRenderer>().material = spriteMaterial;
-            //}
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
             StartCoroutine(DestroyExplosion(explosion));
             collision.GetComponent<PlayerController>().ExplodePlayer();
         }

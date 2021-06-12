@@ -388,6 +388,7 @@ MonoBehaviour:
   dogInnnerRadius: 0.55
   catOuterRadius: 7.3
   catInnnerRadius: 0
+  numSwitches: 6
 --- !u!1 &1058261621
 GameObject:
   m_ObjectHideFlags: 0

@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float lowJumpMultiplier = 2f;
     private int airJumps = 0;
     [SerializeField] private int maxAirJumps = 1;
-
+    
 
 
     //Light Variables
@@ -52,6 +52,15 @@ public class PlayerController : MonoBehaviour
         //anim = GetComponent<Animator>();
         trans = GetComponent<Transform>();
     }
+
+
+    // Limit Switching
+    [SerializeField] private int numSwitches = 6;
+
+
+
+
+
 
     // Update is called once per frame
     void Update()
@@ -143,7 +152,9 @@ public class PlayerController : MonoBehaviour
     }
 
     private void CheckSwitch() {
-        if (Input.GetButtonDown("Fire1")){ // pressed mouse click/ switch chracter
+        if (Input.GetButtonDown("Fire1") && numSwitches > 0){ // pressed mouse click/ switch chracter
+            numSwitches -= 1;
+
             //Debug.Log(transform.childCount); 
             // Dog is first child at index 0 ; Cat is index 1
             if (isDog) {
@@ -182,12 +193,13 @@ public class PlayerController : MonoBehaviour
     private void Die() {
         isAlive = false;
         //anim.SetTrigger("Dead");
+        StartCoroutine(DyingCoroutine());
         
     }
 
     private IEnumerator DyingCoroutine() { // Wait 2 seconds then restart scene, or go main menu
         yield return new WaitForSeconds(2);
-        //FindObjectOfType<gameSession>().ProcessPlayerDeath();
+        FindObjectOfType<GameSession>().ProcessPlayerDeath();
     }
 
 
