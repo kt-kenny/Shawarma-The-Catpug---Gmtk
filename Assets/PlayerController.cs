@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     private bool isMovingUp = false;
     private bool isAlive = true;
 
-    public bool isDog = true;
+    public bool isDog = false;
 
 
 
