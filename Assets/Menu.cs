@@ -8,4 +8,7 @@ public class Menu : MonoBehaviour
     public void StartFirstLevel() {
         SceneManager.LoadScene(1);
     }
+    public void RestartGame() {
+        FindObjectOfType<GameSession>().GetComponent<GameSession>().ResetGameSession();
+    }
 }

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 
 public class GameSession : MonoBehaviour {
-    [SerializeField] private int playerLives = 3;
+    public int playerLives = 5;
     private void Awake() {
         int numGameSessions = FindObjectsOfType<GameSession>().Length;
         if (numGameSessions > 1) {
@@ -22,7 +22,7 @@ public class GameSession : MonoBehaviour {
     }
 
     public void ProcessPlayerDeath() {
-        if (playerLives > 1) {
+        if (playerLives > 0) {
             TakeLife();
         }
         else {
@@ -30,7 +30,7 @@ public class GameSession : MonoBehaviour {
         }
     }
 
-    private void ResetGameSession() {
+    public void ResetGameSession() {
         SceneManager.LoadScene(0);
         Destroy(gameObject);
     }

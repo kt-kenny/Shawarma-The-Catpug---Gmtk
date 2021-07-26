@@ -21,4 +21,5 @@ public class TrapVisibility : MonoBehaviour
             else { r.enabled = false; }
         }
     }
+
 }
